@@ -44,5 +44,7 @@ int main(int argc, char const *argv[])
     {
         cout<<arr[i]<<endl;
     }
+    int res = 5/2;
+    cout << res;
     return 0;
 }
