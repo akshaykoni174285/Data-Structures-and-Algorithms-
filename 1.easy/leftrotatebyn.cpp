@@ -8,12 +8,12 @@ void reverse(int arr[], int left, int right ){
     // right --
     while(left < right){
         // swap
-        int temp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = temp;
-        left++;
-        right++;
-    }
+        int temp = arr[right];
+        arr[right] = arr[left];
+        arr[left] = temp;
+        ++left;
+        ++right;
+    }   
 }
 
 int main(int argc, char const *argv[])
