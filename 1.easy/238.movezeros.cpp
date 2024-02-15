@@ -11,11 +11,9 @@ int main(int argc, char const *argv[])
     {
         if(nums[i] != 0){
             swap(nums[i],nums[count]);
-            
-        }
-        else{
             count++;
         }
+        
         /* code */
     }
 
