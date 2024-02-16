@@ -13,20 +13,16 @@ bool checkSubstring(string str, string checker){
         }
         /* code */
     }
-    if(pointer < checker.length()){
-        return false;
-    }
-    else{
-        return true;
-    }
+    return pointer == checker.length();
+        
     
 
 }
 
 int main(int argc, char const *argv[])
 {
-    string str = "ABCDE";
-    string checker = "ABA";
+    string str = "AABCDE";
+    string checker = "AC";
     bool res = checkSubstring(str, checker);
     cout << res << endl;
     return 0;
