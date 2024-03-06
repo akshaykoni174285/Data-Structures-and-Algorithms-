@@ -27,8 +27,8 @@ int FindVal(int arr[],int target){
 }
 int main(int argc, char const *argv[])
 {
-    int arr[] = {100,200,500,1000,2000,10,20};
-    int target = 200;
+    int arr[] = {4,5,6,7,0,1,2};
+    int target = 0;
 
     int res = FindVal(arr, target);
     cout<<res;
