@@ -11,7 +11,7 @@ bool isEven(int x) {
 int main(int argc, char const *argv[])
 {
     // int arr[] = {10,12,14,7,8};
-    int arr[] = {7,10,13,14};
+    int arr[] = {2,2,2,2,2,2};
     int size_arr = sizeof(arr)/sizeof(arr[0]);
     int count = 1;
     int res = 1;

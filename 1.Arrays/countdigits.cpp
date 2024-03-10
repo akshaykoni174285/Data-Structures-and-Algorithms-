@@ -16,7 +16,7 @@ int Count(int x){
 
 int main(int argc, char const *argv[])
 {
-    int num = 1234;
+    int num = 275;
     int res = Count(num);
     cout << res <<endl;
 
