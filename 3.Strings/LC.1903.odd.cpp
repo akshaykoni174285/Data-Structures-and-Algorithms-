@@ -5,17 +5,24 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    string num = "35427";
+    string num = "52";
     int res = 0;
 
-    for (size_t i = 0; i < num.length(); i++)
+    for (size_t i = num.length(); i >=1; i--)
     {
-        int temp = to_int(num[i]);
-        if (temp%2==1){
-            res = max(res, temp);
+        string temp = num.substr(0,i);
+        int temp_int = stoi(temp);
+        if (temp_int%2 == 1){
+            res = max(res,temp_int);
         }
+
+        
+    }
+    if (res == 0){
+        res = "";
     }
     cout<<res<<endl;
+
     
     return 0;
 }
