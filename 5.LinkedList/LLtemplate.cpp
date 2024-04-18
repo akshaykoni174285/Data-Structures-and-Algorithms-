@@ -37,6 +37,11 @@ void insertNodeatpos(Node* head, int val,int pos){
             curr->next = temp;
             
 }
+void InsertBegin(Node* head, int val){
+    Node* temp = new Node(val);
+    temp->next = head;
+    head = temp;
+}
 
 void InsertAtend(Node* &head, int val){
     //create a node 
