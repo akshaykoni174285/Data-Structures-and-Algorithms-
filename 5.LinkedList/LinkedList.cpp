@@ -33,6 +33,29 @@ void InsertEnd(Node* &head, int val){
     }
     curr -> next = temp_node;
 }
+void insertNodeatpos(Node* head, int val,int pos){
+            Node* curr = head;
+            Node* temp = new Node(val);
+
+            if(pos == 1){
+                temp->next = head;
+                head = temp;
+                
+
+            }
+            for (size_t i = 0; i < pos-2 && curr != NULL; i++)
+            {
+                curr = curr->next;
+            }
+            if (curr  == NULL){
+                cout << "quitting";
+                exit(1);
+                
+            }
+            temp->next = curr->next;
+            curr->next = temp;
+            
+        }
 
 void PrintLL(Node* &head){
     while (head != NULL)
@@ -40,6 +63,26 @@ void PrintLL(Node* &head){
         cout<<head->data<<endl;
         head = head->next;
     }
+    
+}
+
+void DelNode(Node* &head, int val){
+
+    Node* curr = head;
+    Node* prev = head;
+    if(curr->data == val&& curr == prev){
+        head = curr->next;
+        prev->next = NULL;
+    }
+    while (curr->data!=val)
+    {
+        /* code */
+        curr = curr->next;
+    }
+
+    prev->next = curr->next;
+    curr->next = NULL;
+
     
 }
 
@@ -55,8 +98,9 @@ int main(int argc, char const *argv[])
     InsertEnd(head,4);
     InsertEnd(head,5);
     InsertEnd(head,6);
-
+    insertNodeatpos(head,7,3);
     PrintLL(head);
+
 
 
 
