@@ -50,6 +50,27 @@ int FindKey(Node* &head, int key){
     
 }
 
+int findKeyrec(Node* &head, int key){
+    int pos=1;
+    Node* curr = head;
+    if(curr == NULL){
+        return -1;
+    }
+    if(curr->data == key){
+        return 1;
+    }
+    else{
+        
+
+        int res = findKeyrec(head = head->next, key);
+        if(pos == -1)return -1;
+        else{
+            return (res+1);
+        }
+    }
+    
+}
+
 int main(int argc, char const *argv[])
 {
     Node* head = new Node(10);
@@ -57,7 +78,7 @@ int main(int argc, char const *argv[])
     InsertAtend(head,30);
     InsertAtend(head,40);
     PrintLL(head);
-    int res = FindKey(head,30);
+    int res = findKeyrec(head,30);
     cout<<endl<<res<<endl;
 
     return 0;

@@ -6,13 +6,14 @@ class Node{
     public:
         int data;
         Node* next;
+        Node(){
+            this->next = NULL;
+        }
         Node(int value){
             this->data = value;
             this->next = NULL;
         }
-        Node(){
-            this->next = NULL;
-        }
+        
 };
 void insertNodeatpos(Node* head, int val,int pos){
             Node* curr = head;
