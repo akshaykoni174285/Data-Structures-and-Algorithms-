@@ -23,16 +23,18 @@ struct Stack {
         Node * temp = new Node(data);
         temp->next = head;
         head = temp;
+        size++;
 
     }
     void Pop(){
         head = head->next;
+        size--;
     }
     void PrintLL(){
         Node* curr = head;
         while(curr != NULL){
             cout<<curr->data<<" ";
-            curr = curr->next;
+            curr = curr->next; 
         }
     }
     void Seek(){
