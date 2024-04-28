@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
 
 
@@ -7,7 +8,7 @@ class Stack{
     public:
         int top;
         int max_size=0;
-        int *array;
+        string *array;
         Stack(int size){
             top = -1;
             max_size = size;
@@ -42,6 +43,7 @@ class Stack{
 bool Stack::isEmpty(){
     return top==-1;
 }
+
 
 int main(int argc, char const *argv[])
 {
