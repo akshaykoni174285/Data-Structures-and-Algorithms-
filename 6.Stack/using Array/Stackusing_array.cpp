@@ -8,7 +8,7 @@ class Stack{
     public:
         int top;
         int max_size=0;
-        string *array;
+        int *array;
         Stack(int size){
             top = -1;
             max_size = size;

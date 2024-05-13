@@ -15,9 +15,9 @@ struct Node{
 struct Stack {
     Node* head;
     int size;
-    Stack(){
+    Stack(int size){
         head = NULL;
-        size = 0;
+        this->size = size;
     }
     void Push(int data){
         Node * temp = new Node(data);
@@ -38,14 +38,14 @@ struct Stack {
         }
     }
     void Seek(){
-        cout<<head->data<<endl;
+        cout<<endl<<head->data<<endl;
     }
 
 };
 
 int main(int argc, char const *argv[])
 {
-    Stack stack;
+    Stack stack(5);
     stack.Push(10);
     stack.Push(20);
     stack.Push(30);
