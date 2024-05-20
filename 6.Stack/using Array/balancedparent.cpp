@@ -1,31 +1,45 @@
 #include <iostream>
 #include <stack>
 #include <string>
-
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    stack<char> stack;
-    string parenth = "{}([())";
+    stack<char> Stack;
+    string parent = "{}()(";
 
-    for (size_t i = 0; i < parenth.length(); i++)
-    {
-        if (parenth[i] == '{' ||parenth[i] == '[' ||parenth[i] == '(')
-        {
-            stack.push(parenth[i]);
+    for (size_t i = 0; i < parent.length(); i++)
+    {   
+        if(parent[i] == '{' || parent[i] == '[' || parent[i] == '('){
+            
+            Stack.push(parent[i]);
         }
-        else if((stack.top() == '{' && parenth[i] == '}') || (stack.top() == '[' && parenth[i] == ']') || (stack.top() == '(' && parenth[i] == ')')){
-            stack.pop();
+        else{
+            if (!Stack.empty()){
+                char ch = parent[i];
+                if ((ch == ')' && Stack.top() == '(') || 
+                        (ch == '}' && Stack.top() == '{') ||
+                        (ch == ']' && Stack.top() == '[')){
+                            Stack.pop();
+                        }
+                else{
+                    cout<<"not balanced"<<endl;
+                    exit(0);
+                }
+            }
+            else{
+                cout<<"not balanced"<<endl;
+                    exit(0);
+
+            }
         }
-       
-        
     }
-    if (stack.empty()){
-        cout<<"balanced parenthis"<<endl;
+
+    if(Stack.empty()){
+        cout<<"balanced"<<endl;
     }
     else{
-        cout<<"not balanced parenthis"<<endl;
+        cout<<"not balanced"<<endl;
     }
     
     return 0;
