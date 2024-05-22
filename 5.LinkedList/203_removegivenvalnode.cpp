@@ -20,6 +20,10 @@ struct LinkedList{
         Node*temp = new Node(val);
         head = temp;
     }
+    LinkedList(){
+        Node* temp = new Node();
+        head = temp;
+    }
     void Insert(int val){
         Node *temp  =new Node(val);
         Node* curr = head;
@@ -39,31 +43,51 @@ struct LinkedList{
             curr = curr->next;
         }
     }
+    void RemoveVal(int val){ 
+        while(head->data == val && head->next!=NULL){
+            head = head->next;
+        }
+        if(head == NULL){
+            cout<<"NULL!!"<<endl;
+            exit(0);
+        }
+        if(head->next == NULL && head->data == val){
+            cout<<"removed!!!"<<endl;
+            exit(0);
+        }
+
+        Node* curr = head;
+        while(curr!= NULL){
+            if(curr->data == val){
+                curr->next = curr->next->next;
+
+            }
+            else{
+                
+                curr = curr->next;
+            }
+        }
+        PrintLL();
+    }
+    
 };
 
-Node* MergeSort(LinkedList node1, LinkedList node2){
-
-}
 
 
 int main(int argc, char const *argv[])
 {
-    LinkedList L1(0);
-    L1.Insert(1);
+    LinkedList L1(1);
     L1.Insert(2);
     L1.Insert(3);
     L1.Insert(4);
-    L1.Insert(5);
-    L1.Insert(6);
-    LinkedList L2(0);
-    L2.Insert(1);
-    L2.Insert(2);
-    L2.Insert(3);
-    L2.Insert(4);
-    L1.PrintLL();
-    cout<<endl;
-    L2.PrintLL();
-    Node* ans = MergeSort(L1,L2);
+    L1.Insert(1);
+    L1.Insert(1);
+   
+    
+    
+    // L1.PrintLL();
+    L1.RemoveVal(1);
+  
 
     return 0;
 }

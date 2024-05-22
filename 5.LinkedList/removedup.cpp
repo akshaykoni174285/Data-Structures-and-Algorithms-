@@ -39,31 +39,42 @@ struct LinkedList{
             curr = curr->next;
         }
     }
+    void RemoveDup(){
+        // if the head is null or if there is only one node so return that node itself 
+        if(head==NULL || head->next==NULL){
+            cout<<head->data<<endl;
+            exit(1);
+        }
+        // if there are more than one node check if the data is equal or not 
+        Node* curr = head;
+        while(curr->next!=NULL){
+            if (curr->data != curr->next->data){
+                curr = curr->next;
+            }
+            else{curr->next = curr->next->next;
+            }
+            continue;
+        }
+        PrintLL();
+        
+        
+    }
 };
 
-Node* MergeSort(LinkedList node1, LinkedList node2){
-
-}
 
 
 int main(int argc, char const *argv[])
 {
-    LinkedList L1(0);
+    LinkedList L1(1);
     L1.Insert(1);
-    L1.Insert(2);
+    L1.Insert(1);
     L1.Insert(3);
     L1.Insert(4);
-    L1.Insert(5);
+    L1.Insert(4);
     L1.Insert(6);
-    LinkedList L2(0);
-    L2.Insert(1);
-    L2.Insert(2);
-    L2.Insert(3);
-    L2.Insert(4);
-    L1.PrintLL();
-    cout<<endl;
-    L2.PrintLL();
-    Node* ans = MergeSort(L1,L2);
+    // L1.PrintLL();
+    L1.RemoveDup();
+  
 
     return 0;
 }
