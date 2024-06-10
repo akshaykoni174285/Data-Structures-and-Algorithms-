@@ -1,25 +1,21 @@
 #include <iostream>
+
 using namespace std;
 
-struct Node {
+struct Node{
     int key;
-    Node* right;
     Node* left;
+    Node* right;
     Node(int val){
         this->key = val;
-        right = NULL;
-        left = NULL;
+        this->left = NULL;
+        this->right = NULL;
     }
 };
 
-void TraverseBT(Node* root){
-    if(root == NULL) return;
-    TraverseBT(root->left);
-    cout<<root->key;
-    TraverseBT(root->right);
-    
-        
-    
+int Height(Node* root){
+    if(root==NULL) return 0;
+    return max(Height(root->right),Height(root->left)) + 1;
 }
 
 int main(int argc, char const *argv[])
@@ -31,8 +27,6 @@ int main(int argc, char const *argv[])
     root->left->right = new Node(4);
     root->right->left = new Node(5);
     root->right->right = new Node(6);
-    TraverseBT(root);
-
+    cout<<Height(root)<<endl;
     return 0;
 }
-

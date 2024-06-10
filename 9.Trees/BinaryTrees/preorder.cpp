@@ -14,8 +14,8 @@ struct Node {
 
 void TraverseBT(Node* root){
     if(root == NULL) return;
-    TraverseBT(root->left);
     cout<<root->key;
+    TraverseBT(root->left);
     TraverseBT(root->right);
     
         
@@ -35,4 +35,3 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
-
