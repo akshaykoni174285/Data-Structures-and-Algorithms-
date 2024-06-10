@@ -14,56 +14,104 @@ struct Node{
     }
 };
 
-struct LinkedList{
-    Node* head;
-    LinkedList(int val){
-        Node*temp = new Node(val);
-        head = temp;
+void InsertEnd(Node* &head, int val){
+    Node* temp_node = new Node(val);
+    Node* curr = head;
+    // if(curr == NULL){
+    //     cout<<"Error"<<endl;
+    // }
+    while(curr->next != NULL){
+        curr = curr->next;
     }
-    void Insert(int val){
-        Node *temp  =new Node(val);
-        Node* curr = head;
-        
-        while (curr->next != NULL)
-        {
-            curr = curr->next;
-        }
-        curr->next = temp;
-        
-        
-    }
-    void PrintLL(){
-        Node* curr = head;
-        while(curr!=NULL){
-            cout<<curr->data<<endl;
-            curr = curr->next;
-        }
-    }
-};
+    curr -> next = temp_node;
+}
 
-Node* MergeSort(LinkedList node1, LinkedList node2){
+Node* ReverseLL(Node* &head){
+    Node* curr = head;
+    Node* prev = NULL;
+    Node* Next = NULL;
+    while(curr != NULL){
+        Next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = Next;
+    }
+    return prev;
+   
+    
 
 }
+void PrintLL(Node* head){
+    while(head!=NULL){
+        cout<<head->data<<" ";
+        head = head->next;
+    }
+    cout<<endl;
+
+}
+
+Node* MergeSort(Node* n1, Node* n2){
+    if(n1==NULL){
+        return n2;
+    }
+    if(n2==NULL){
+        return n1;
+    }
+    Node* temp = n1;
+    if(n1->data < n2->data){
+        n1 = n1->next;
+    }
+    else{
+        temp = n2;
+        n2 = n2->next;
+    }
+    Node* curr = temp;
+    while(n1&&n2){
+        if(n1->data < n2->data){
+            curr->next = n1;
+            n1 = n1->next;
+
+        }
+        else{
+            curr->next = n2;
+            n2 = n2 -> next;
+        }
+        curr = curr->next;
+
+    }
+    if(!n1){
+        curr->next = n2;
+    }
+    else{
+        curr->next = n1;
+    }
+    
+    return temp;
+}
+
 
 
 int main(int argc, char const *argv[])
 {
-    LinkedList L1(0);
-    L1.Insert(1);
-    L1.Insert(2);
-    L1.Insert(3);
-    L1.Insert(4);
-    L1.Insert(5);
-    L1.Insert(6);
-    LinkedList L2(0);
-    L2.Insert(1);
-    L2.Insert(2);
-    L2.Insert(3);
-    L2.Insert(4);
-    L1.PrintLL();
-    cout<<endl;
-    L2.PrintLL();
-    Node* ans = MergeSort(L1,L2);
+    Node* head1 = new Node(1);
+    InsertEnd(head1, 2);
+    InsertEnd(head1, 3);
+    InsertEnd(head1, 4);
+    InsertEnd(head1, 5);
+    PrintLL(head1);
+
+    Node* head2 = new Node(2);
+    InsertEnd(head2, 4);
+    InsertEnd(head2, 5);
+    InsertEnd(head2, 6);
+    PrintLL(head2);
+    Node* sorted = MergeSort(head1,head2);
+    PrintLL(sorted);
+
+    
+    // L1.PrintLL();
+    
+  
 
     return 0;
 }
