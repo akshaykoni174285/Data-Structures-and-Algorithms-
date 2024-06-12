@@ -20,12 +20,18 @@ void LevelOrderTraverse(Node* root){
     }
     queue<Node*> queue;
     queue.push(root);
+    queue.push(NULL);
  
     
-    while(queue.empty() == false){
+    while(queue.size()>1){
         
         Node* curr = queue.front();
         queue.pop();
+        if(curr == NULL){
+            cout<<endl;
+            queue.push(NULL);
+            continue;
+        }
         cout<<curr->key<<" ";
         
         if(curr->left != NULL){

@@ -66,6 +66,9 @@ struct CircularBuffer{
         return data;
 
     }
+    void PrintQueue(){
+        
+    }
 
 
     
@@ -78,7 +81,7 @@ int main(int argc, char const *argv[])
     queue.Enqueue(3);
     cout<<queue.Dequeue()<<endl;
     queue.Enqueue(4);
-    
+
     
 
     return 0;

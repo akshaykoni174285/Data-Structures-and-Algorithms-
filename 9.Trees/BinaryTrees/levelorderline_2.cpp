@@ -21,10 +21,13 @@ void LevelOrderTraverse(Node* root){
     queue<Node*> queue;
     queue.push(root);
  
-    
+
     while(queue.empty() == false){
-        
-        Node* curr = queue.front();
+         int count = queue.size();
+        for (size_t i = 0; i < count; i++)
+        {
+            /* code */
+            Node* curr = queue.front();
         queue.pop();
         cout<<curr->key<<" ";
         
@@ -34,8 +37,8 @@ void LevelOrderTraverse(Node* root){
         if(curr->right != NULL){
             queue.push(curr->right);
         }
-        
-        
+        } 
+        cout<<endl; 
     }
     
 
