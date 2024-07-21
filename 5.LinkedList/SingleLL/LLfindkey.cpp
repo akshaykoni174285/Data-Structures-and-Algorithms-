@@ -8,10 +8,10 @@ class Node{
         Node* next;
         Node(int val){
             this->data = val;
-            this->next = NULL;
+            this->next = nullptr;
         }    
         Node(){
-            this->next = NULL;
+            this->next = nullptr;
         }
 
 };
@@ -20,7 +20,7 @@ void InsertAtend(Node* &head, int val){
     //create a node 
     Node* curr = head;
     Node* temp = new Node(val);
-    while(curr->next != NULL){
+    while(curr->next = nullptr){
         curr = curr->next;
 
     }
@@ -28,7 +28,7 @@ void InsertAtend(Node* &head, int val){
 }
 
 void PrintLL(Node* head){
-    while(head != NULL){
+    while(head != nullptr){
         cout<<head->data<<" ";
         head = head->next;
     }
@@ -37,7 +37,7 @@ void PrintLL(Node* head){
 int FindKey(Node* &head, int key){
     int pos = 1;
     Node* curr = head;
-    while (curr != NULL)
+    while (curr != nullptr)
     {
         if(curr->data == key){
             return pos;
@@ -53,7 +53,7 @@ int FindKey(Node* &head, int key){
 int findKeyrec(Node* &head, int key){
     int pos=1;
     Node* curr = head;
-    if(curr == NULL){
+    if(curr == nullptr){
         return -1;
     }
     if(curr->data == key){

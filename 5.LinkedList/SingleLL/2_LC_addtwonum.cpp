@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstddef>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ struct Node{
     Node* next;
     Node(int val){
         this->data = val;
-        this->next = NULL;
+        this->next = nullptr;
     }
 };
 
@@ -16,7 +17,7 @@ void twoSum(Node* h1,Node* h2){
     int carry = 0;
     int * ptr = &carry;
 
-    while(h1!=NULL){
+    while(h1!=nullptr){
         // add the two vales 
         // check if its greater than 10 if yes then find the remainder and print the val
         // carry the remainder and null the remainder and
