@@ -32,6 +32,7 @@ int main(int argc, char const *argv[])
     root->left->left = new Node(3);
     root->left->right = new Node(5);
     bool res = Children_sum(root);
+    
     cout<<res<<endl;
     return 0;
 }
