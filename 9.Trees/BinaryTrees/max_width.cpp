@@ -58,8 +58,7 @@ int main(int argc, char const *argv[])
     root->right = new Node(2);
     root->left->left = new Node(3);
     root->left->right = new Node(4);
-    root->right->left = new Node(5);
-    root->right->right = new Node(6);
+  
     LevelorderTraverse(root); 
     return 0;
 }
