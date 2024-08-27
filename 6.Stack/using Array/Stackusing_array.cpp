@@ -15,7 +15,9 @@ class Stack{
             array = new int[max_size];
             
         }
-        bool isEmpty();
+        bool isEmpty(){
+            return top == -1;
+        }
         bool isFull(){
             return top == max_size-1;
         }
@@ -40,9 +42,7 @@ class Stack{
             
         }
 };
-bool Stack::isEmpty(){
-    return top==-1;
-}
+
 
 
 int main(int argc, char const *argv[])
