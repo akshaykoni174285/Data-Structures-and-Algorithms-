@@ -28,15 +28,12 @@ int main(int argc, char const *argv[])
 
     for(int i = 0; i< nums.size() ;i++){
         int complement = target - nums[i];
-        auto it = umap.find(complement);
-
-        if (it != umap.end()) {
-        // Key found
-            std::cout << "Key " << complement << " found with value: " << it->second << std::endl;
-        } else {
-        // Key not found
-            std::cout << "Key " << complement << " not found in the map." << std::endl;
+        
+        if(umap.count(complement) && umap[complement] !=i){
+             cout<<i<<" " << umap[complement]<<endl;
+             exit(0);
         }
+        
 
     }
 
