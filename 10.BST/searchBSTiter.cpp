@@ -2,7 +2,7 @@
 
 using namespace std;
 
-# iterative is better than recursive as it takes less auxilary space 
+
 struct Node{
     int key;
     Node* left;
@@ -54,8 +54,8 @@ int main(int argc, char const *argv[])
     root->right->right = new Node(90);
     root->right->left = new Node(60);    
     int find = 80;
-    // bool res = FindBST(root,find);
-    bool res = findBSTiter(root,find);
+    bool res = FindBST(root,find);
+    bool res = findBSTiter(root,find)
     cout<<res<<endl;
     return 0;
 }
