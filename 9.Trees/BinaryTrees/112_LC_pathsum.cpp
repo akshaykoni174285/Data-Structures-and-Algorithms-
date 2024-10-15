@@ -15,22 +15,19 @@ struct Node{
 
 
 bool hasPathSum(Node* root, int targetsum){
-    int checkval = targetsum;
-    if(root!=nullptr && targetsum!=0){
-        targetsum=targetsum-root->key;
-        // cout<<root->key<<endl;
-    }
-    if(root == nullptr && targetsum!=0){
-        return false;
-    }
-    if(targetsum == 0 && (root->left==nullptr && root->right==nullptr)){
-        return true;
-    } 
+    bool pathsum(Node* root, int cursum){
 
+        if(root == nullptr) return false;
 
-    bool res_left = hasPathSum(root->left, targetsum);
-    bool res_right = hasPathSum(root->right, targetsum);
-    return res_left || res_right;
+        cursum = cursum + root->val;
+
+        if(root->left == nullptr and root->right == nullptr){
+            return cursum == targetsum;
+        }
+
+        return pathsum(root->left, cursum) || pathsum(root->right,cursum);
+
+    }
 }
 
 int main(int argc, char const *argv[])
