@@ -4,7 +4,7 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    vector<int> nums = {1,1,2,2,2,1,1,};
+    vector<int> nums = {1,1,2,2,2,1,1};
     int count = 0;
     int element;
 
@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
         count++;
     }
     else{
-        count-- ;
+        count--;
     }
 
    }
