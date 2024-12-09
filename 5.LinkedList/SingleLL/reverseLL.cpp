@@ -26,21 +26,29 @@ void InsertEnd(Node* &head, int val){
     curr -> next = temp_node;
 }
 
-Node* ReverseLL(Node* &head){
-    Node* curr = head;
-    Node* prev = NULL;
-    Node* Next = NULL;
-    while(curr != NULL){
-        Next = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = Next;
-    }
-    return prev;
+// Node* ReverseLL(Node* &head){
+//     Node* curr = head;
+//     Node* prev = NULL;
+//     Node* Next = NULL;
+//     while(curr != NULL){
+//         Next = curr->next;
+//         curr->next = prev;
+//         prev = curr;
+//         curr = Next;
+//     }
+//     return prev;
    
     
 
+// }
+
+
+
+Node* ReverseLL(&head){
+    
+
 }
+
 void PrintLL(Node* head){
     while(head!=NULL){
         cout<<head->data<<" ";
