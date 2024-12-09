@@ -8,9 +8,9 @@ int main(int argc, char const *argv[])
     int j = 0;
     for (size_t i = 1; i < size_arr; i++)
     {
-        if(arr[i]!=arr[j]){
-            i++;
-            arr[i] = arr[j];
+        if (arr[i] != arr[j]){
+            j++;
+            arr[j] = arr[i];
         }
     }
 
