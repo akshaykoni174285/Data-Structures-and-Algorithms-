@@ -2,7 +2,9 @@
     "files.associations": {
         "*.ejs": "html",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "chrono": "cpp",
+        "span": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
