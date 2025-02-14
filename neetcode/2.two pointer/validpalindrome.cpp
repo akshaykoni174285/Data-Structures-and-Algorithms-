@@ -9,10 +9,12 @@ int main(int argc, char const *argv[])
     string clean = "";
 
     for(auto i:name){
-        if (i.isalnum()){
-            clean.insert(i);
+        if (isalnum(i)){
+            clean =+i;
         }
     }
+
+    
 
     return 0;
 }
