@@ -27,6 +27,15 @@ Node* MergeSorted(Node* first, Node* second){
     }
     result = result->next;
    }
+   while(first){
+    result->next = first;
+    first = first->next;
+
+   }
+   while(second){
+    result->next = second;
+    second = second->next;
+   }
    return res;
 }
 
@@ -48,6 +57,7 @@ int main(int argc, const char** argv) {
     Node* l2 = new Node(1);
     l2->next = new Node(3);
     l2->next->next = new Node(5);
+    l2->next->next->next = new Node(6);
 
     Node* res = MergeSorted(l1,l2);
     PrintLL(res->next);
