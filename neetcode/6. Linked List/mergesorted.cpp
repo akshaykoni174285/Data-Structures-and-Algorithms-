@@ -12,31 +12,42 @@ struct Node{
     }
 };
 
-Node* MergeSorted(Node* first, Node* second){
+Node* MergeSorted(Node* list1, Node* list2){
    Node* result = new Node(0);
    Node* res = result;
 
-   while(first && second){
-    if(first->data < second->data){
-        result->next = first;
-        first = first->next;
+   while(list1 && list2){
+    if(list1->data < list2->data){
+        result->next = list1;
+        list1 = list1->next;
     }
     else{
-        result->next = second;
-        second = second->next;
+        result->next = list2;
+        list2 = list2->next;
     }
     result = result->next;
-   }
-   while(first){
-    result->next = first;
-    first = first->next;
 
-   }
-   while(second){
-    result->next = second;
-    second = second->next;
-   }
-   return res;
+    // if (list1)
+    // {
+    //     result->next = 
+    // }
+    // else
+    // {
+    //     /* code */
+    // }
+    
+    
+
+
+    }
+
+    if(list1){
+        result->next = list1;
+    }
+    else{
+        result->next = list2;
+    }
+    return res;
 }
 
 
@@ -58,6 +69,7 @@ int main(int argc, const char** argv) {
     l2->next = new Node(3);
     l2->next->next = new Node(5);
     l2->next->next->next = new Node(6);
+    l2->next->next->next = new Node(7);
 
     Node* res = MergeSorted(l1,l2);
     PrintLL(res->next);
