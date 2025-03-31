@@ -24,7 +24,7 @@ public:
                         cout << n << " ";
                     }
                     cout << endl;
-                    return;  // Exit the function after printing
+                    return;  
                 }
             }
         }
