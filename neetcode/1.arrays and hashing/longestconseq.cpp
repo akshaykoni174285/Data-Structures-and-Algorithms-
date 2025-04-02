@@ -8,7 +8,7 @@ int longestConsecutive(vector<int>& nums) {
     if (nums.empty()) return 0;  // Fix: Handle empty case
 
     unordered_set<int> myset(nums.begin(), nums.end());
-    int res = 0;  // Fix: Initialize to 0
+    int res = 0; 
 
     for (int x : myset) {
         if (myset.find(x - 1) == myset.end()) {  // Start of a sequence
