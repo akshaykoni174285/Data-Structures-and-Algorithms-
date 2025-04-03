@@ -19,7 +19,7 @@ public:
 class LRU_cache{
 private:
     int capacity;
-    unordered_map<int,Node*> cache;
+    unordered_map<int,Node*> mymap;
 
     Node* left;
     Node* right;
@@ -42,7 +42,7 @@ private:
 
 public:
     LRU_cache(int capacity) : capacity(capacity){
-        cache.clear();
+        mymap.clear();
         left = new Node(0,0);
         right = new Node(0,0);
         left->next = right;
@@ -51,8 +51,8 @@ public:
 
     // get function 
     int get(int key){
-        if(cache.find(key)!=cache.end()){
-            Node* node = cache[key];
+        if(mymap.find(key)!=mymap.end()){
+            Node* node = mymap[key];
             remove(node);
             insert(node);
             return node->val;
@@ -64,8 +64,8 @@ public:
     void put(int key,int value){
         // if the key is already there then just update it 
         // if not then create it 
-        if(cache.find(key)!=cache.end()){
-            Node* node = cache[key];
+        if(mymap.find(key)!=mymap.end()){
+            Node* node = mymap[key];
             // not deleting the node just removing from LL
             remove(node);
 
@@ -73,15 +73,15 @@ public:
             insert(node);
             return;
         }
-        if(cache.size() >= capacity){
+        if(mymap.size() >= capacity){
             Node* lru = left->next;
             remove(lru);
-            cache.erase(lru->key);
+            mymap.erase(lru->key);
             delete lru;
         }
 
         Node* node = new Node(key, value);
-        cache[key] = node;
+        mymap[key] = node;
         insert(node);
         // if its bigger than the size then remove the lru
     }
