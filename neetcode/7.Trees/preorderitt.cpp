@@ -24,6 +24,29 @@ TreeNode* createSampleTree() {
     return root;
 }
 
+vector<int> PostorderTraversal(TreeNode* root) {
+    stack<TreeNode*> stack1;
+    stack<TreeNode*> stack2;
+
+    vector<int> result;
+    stack1.push(root);
+    while(!stack1.empty()){
+
+        TreeNode* node = stack1.top();
+        stack1.pop();
+        stack2.push(node);
+
+        if(node->left) stack1.push(node->left);
+        if(node->right) stack1.push(node->right);
+    }
+
+    while(!stack2.empty()){
+        result.push_back(stack2.top()->val);
+        stack2.pop();
+    }
+
+}
+
 vector<int> inorderTraversal(TreeNode* root){
     vector<int> result;
     stack<TreeNode*> stack;
@@ -64,6 +87,10 @@ vector<int> preorderTraversal(TreeNode* root) {
 
 }
 
+TreeNode* InvertTree(TreeNode* root){
+    TreeNode* curr = root;
+
+}
 
 int main() {
     TreeNode* root = createSampleTree();
@@ -73,5 +100,7 @@ int main() {
     for(auto x:inorder){
         cout<<x<<endl;
     }
+
+    TreeNode* swaproot = InvertTree(root);
     return 0;
 }
