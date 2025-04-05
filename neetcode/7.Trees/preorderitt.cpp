@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -88,19 +89,67 @@ vector<int> preorderTraversal(TreeNode* root) {
 }
 
 TreeNode* InvertTree(TreeNode* root){
-    TreeNode* curr = root;
+    if(root == nullptr) return nullptr;
+
+    swap(root->left,root->right);
+    InvertTree(root->left);
+    InvertTree(root->right);
+
+    return root;
 
 }
+
+vector<vector<int>> levelOrder(TreeNode* root) {
+    vector<vector<int>> result;
+    if (!root) return result;  
+
+    queue<TreeNode*> myqueue;
+    myqueue.push(root);
+    myqueue.push(nullptr);  
+    int i = 0; 
+
+    while (!myqueue.empty()) {
+        TreeNode* node = myqueue.front();
+        myqueue.pop();
+
+        if (node == nullptr) {
+            ++i;
+            if (!myqueue.empty()) {
+                myqueue.push(nullptr);  
+            }
+        } else {
+            if (result.size() <= i) {
+                result.push_back({});
+            }
+            result[i].push_back(node->val);
+
+            if (node->left) myqueue.push(node->left);
+            if (node->right) myqueue.push(node->right);
+        }
+    }
+
+    return result;
+}
+
+
+
 
 int main() {
     TreeNode* root = createSampleTree();
 
-    vector<int> preorder = preorderTraversal(root);
-    vector<int> inorder = inorderTraversal(root);
-    for(auto x:inorder){
-        cout<<x<<endl;
-    }
+    // vector<int> preorder = preorderTraversal(root);
+    // vector<int> inorder = inorderTraversal(root);
+    // for(auto x:inorder){
+    //     cout<<x<<endl;
+    // }
 
-    TreeNode* swaproot = InvertTree(root);
+    // TreeNode* swaproot = InvertTree(root);
+    vector<vector<int>> res = LevelOrderTraversal(root);
+    for(auto i:res){
+        for(auto j:i){
+            cout<<j<<" ";
+        }
+        cout<<endl;
+    }
     return 0;
 }
