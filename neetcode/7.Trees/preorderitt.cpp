@@ -47,7 +47,7 @@ vector<int> PostorderTraversal(TreeNode* root) {
     }
 
 }
-#nothing just nothing 
+// #nothing just nothing 
 vector<int> inorderTraversal(TreeNode* root){
     vector<int> result;
     stack<TreeNode*> stack;
@@ -133,6 +133,41 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 
 
 
+int countNodes(TreeNode* root) {
+    if(root == nullptr) return 0;
+    return 1 + countNodes(root->left) + countNodes(root->right);
+ 
+}
+
+int countNodesStack(TreeNode* root) {
+    stack<TreeNode*> stack;
+    int count = 0;
+    stack.push(root);
+
+    while(!stack.empty()) {
+        TreeNode* node = stack.top();
+        stack.pop();
+        count++;
+        if(node->right) stack.push(node->right);
+        if(node->left) stack.push(node->left);
+    }
+}
+
+
+int depth(TreeNode *node,int res) {
+    if(node  == nullptr) return 0;
+    int lDepth = depth(node->left,res);
+    int rDepth = depth(node->right,res);
+
+    
+}
+
+int diameterTree(TreeNode* node){
+    int res = 0;
+    depth(node,res);
+    return res;
+
+}
 
 int main() {
     TreeNode* root = createSampleTree();
@@ -144,12 +179,21 @@ int main() {
     // }
 
     // TreeNode* swaproot = InvertTree(root);
-    vector<vector<int>> res = LevelOrderTraversal(root);
-    for(auto i:res){
-        for(auto j:i){
-            cout<<j<<" ";
-        }
-        cout<<endl;
-    }
+    // int res = countNodes(root);
+    int res = diameterTree(root);
+    cout<<res<<endl;
+    // vector<int> res = levelOrder(root);
+    // for(auto i:res){
+    //     for(auto j:i){
+    //         cout<<j<<" ";
+    // int res = countNodesStack(root);  
+    // cout<<res<<endl;
+    // vector<vector<int>> res = levelOrder(root);
+    // for(auto i:res){
+    //     for(auto j:i){
+    //         cout<<j<<" ";
+    //     }
+    //     cout<<endl;
+    // }
     return 0;
 }
