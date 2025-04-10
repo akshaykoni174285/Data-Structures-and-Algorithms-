@@ -154,11 +154,15 @@ int countNodesStack(TreeNode* root) {
 }
 
 
-int depth(TreeNode *node,int res) {
+int depth(TreeNode *node,int &res) {
     if(node  == nullptr) return 0;
     int lDepth = depth(node->left,res);
     int rDepth = depth(node->right,res);
+    
+    res = max(res,lDepth+rDepth);
 
+
+    return 1 + max(lDepth,rDepth);
     
 }
 
@@ -169,8 +173,26 @@ int diameterTree(TreeNode* node){
 
 }
 
+bool isSame(TreeNode* root,TreeNode* root2){
+    if(root == nullptr && root2 == nullptr) return true;
+    if(root == nullptr || root2 == nullptr) return false;
+
+    if(root->val != root2->val) return false;
+
+    
+
+    return isSame(root->left,root2->left) && isSame(root->right,root2->right);
+
+
+
+}
+
 int main() {
     TreeNode* root = createSampleTree();
+    TreeNode* root1 = createSampleTree();
+    bool flag = false;
+    flag = isSame(root,root1);
+    cout<<flag<<endl;
 
     // vector<int> preorder = preorderTraversal(root);
     // vector<int> inorder = inorderTraversal(root);
@@ -180,8 +202,8 @@ int main() {
 
     // TreeNode* swaproot = InvertTree(root);
     // int res = countNodes(root);
-    int res = diameterTree(root);
-    cout<<res<<endl;
+    // int res = diameterTree(root);
+    // cout<<res<<endl;
     // vector<int> res = levelOrder(root);
     // for(auto i:res){
     //     for(auto j:i){
