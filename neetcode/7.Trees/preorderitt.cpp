@@ -19,8 +19,8 @@ TreeNode* createSampleTree() {
     root->left = new TreeNode(2);
     root->right = new TreeNode(3);
     root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    root->right->right = new TreeNode(6);
+    // root->left->right = new TreeNode(5);
+    // root->right->right = new TreeNode(6);
     
     return root;
 }
@@ -48,56 +48,61 @@ vector<int> PostorderTraversal(TreeNode* root) {
 
 }
 // #nothing just nothing 
-vector<int> inorderTraversal(TreeNode* root){
-    vector<int> result;
-    stack<TreeNode*> stack;
+void inorderTraversal(TreeNode* root){
+    stack<TreeNode*> mystack;
     TreeNode* curr = root;
-    while(curr || !stack.empty()){
-        while(curr){
-            stack.push(curr);
-            curr = curr->left;   
+   
+    while(curr!=nullptr || !mystack.empty()){
+        // we want to visit the left most node 
+        while (curr)
+        {
+            mystack.push(curr);
+            curr = curr->left;
         }
 
-        curr = stack.top();
-        result.push_back(curr->val);
-        stack.pop();
-        curr = curr->right;
+        TreeNode* node = mystack.top();
+        mystack.pop();
+        cout<<node->val<<endl;
 
-    }
-    return result;
-}
-
-vector<int> preorderTraversal(TreeNode* root) {
-    vector<int> result;
-    stack<TreeNode*> stack;
-    if (root == nullptr) return result;
-
-
-    stack.push(root);
-
-    while(!stack.empty()){
-        TreeNode* node = stack.top();
-        stack.pop();
-        result.push_back(node->val);
-
-        if(node->right) stack.push(node->right);
-        if(node->left) stack.push(node->left);
+        curr = node->right;
     }
 
-    return result;
-
 }
 
-TreeNode* InvertTree(TreeNode* root){
-    if(root == nullptr) return nullptr;
+// vector<int> preorderTraversal(TreeNode* root) {
+//     vector<int> result;
+//     stack<TreeNode*> stack;
+//     if (root == nullptr) return result;
 
-    swap(root->left,root->right);
-    InvertTree(root->left);
-    InvertTree(root->right);
 
-    return root;
+//     stack.push(root);
 
-}
+//     while(!stack.empty()){
+//         TreeNode* node = stack.top();
+//         stack.pop();
+//         result.push_back(node->val);
+
+//         if(node->right) stack.push(node->right);
+//         if(node->left) stack.push(node->left);
+//     }
+
+//     return result;
+
+// }
+
+// TreeNode* InvertTree(TreeNode* root){
+//     if(root == nullptr) return nullptr;
+
+//     swap(root->left,root->right);
+//     InvertTree(root->left);
+//     InvertTree(root->right);
+
+//     return root;
+
+// }
+
+
+
 
 vector<vector<int>> levelOrder(TreeNode* root) {
     vector<vector<int>> result;
@@ -130,6 +135,8 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 
     return result;
 }
+
+
 
 
 
@@ -187,13 +194,37 @@ bool isSame(TreeNode* root,TreeNode* root2){
 
 }
 
+void preorderTraversal(TreeNode* root){
+    if(root==nullptr) return;
+    cout<<root->val<<endl;
+    preorderTraversal(root->left);
+    preorderTraversal(root->left);
+}
+
+void InvertTree(TreeNode* &root){
+    stack<TreeNode*> mystack;
+    mystack.push(root);
+    while(!mystack.empty()){
+        TreeNode* node = mystack.top();
+        swap(node->left,node->right);
+        if(node->left) mystack.push(node->left);
+        if(node->right) mystack.push(node->right);
+
+    }
+}
+
+int MaxHeight(TreeNode* root){
+    if(root == nullptr) return 0;
+    return 1 + max(MaxHeight(root->left),MaxHeight(root->right));
+}
+
 int main() {
     TreeNode* root = createSampleTree();
-    TreeNode* root1 = createSampleTree();
-    bool flag = false;
-    flag = isSame(root,root1);
-    cout<<flag<<endl;
-
+    // inorderTraversal(root);
+    int res = MaxHeight(root);
+    cout<<res<<endl;
+    // InvertTree(root);
+    // preorderTraversal(root);
     // vector<int> preorder = preorderTraversal(root);
     // vector<int> inorder = inorderTraversal(root);
     // for(auto x:inorder){
