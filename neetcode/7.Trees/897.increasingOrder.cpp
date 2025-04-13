@@ -19,12 +19,37 @@ TreeNode* createSampleTree() {
     return root;
 }
 
+<<<<<<< HEAD
+void increasingOrder(TreeNode* root,TreeNode* &result){
+    if(root == nullptr) return;
+    increasingOrder(root->left,result);
+    result->left = nullptr;
+    result->right = root;
+    result = root;
+    increasingOrder(root->right,result);
+
+}
+
+void preorderTraversal(TreeNode* root){
+    if(root == nullptr)return;
+    preorderTraversal(root->left);
+    cout<<root->val<<endl;
+    preorderTraversal(root->right);
+}
+int main() {
+    TreeNode* root = createSampleTree();
+    TreeNode* dummy = new TreeNode(0);  // dummy node
+    TreeNode* curr = dummy;
+    increasingOrder(root,curr);
+    preorderTraversal(dummy->right);
+=======
 
 
 
 
 int main() {
     TreeNode* root = createSampleTree();
+>>>>>>> 2d72421b5e83ae327742277840bc82f752db1d44
 
     return 0;
 }
