@@ -39,10 +39,10 @@ int main(int argc, char const *argv[])
 {
     stack<int> mystack;
 
-    myStack.push(1);
-    myStack.push(2);
-    myStack.push(3);
-    myStack.printStack();
+    // myStack.push(1);
+    // myStack.push(2);
+    // myStack.push(3);
+    // myStack.printStack();
 
     return 0;
 }
