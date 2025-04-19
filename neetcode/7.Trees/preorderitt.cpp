@@ -106,31 +106,25 @@ void inorderTraversal(TreeNode* root){
 
 vector<vector<int>> levelOrder(TreeNode* root) {
     vector<vector<int>> result;
-    if (!root) return result;  
+    if (!root) return result;
 
-    queue<TreeNode*> myqueue;
-    myqueue.push(root);
-    myqueue.push(nullptr);  
-    int i = 0; 
+    queue<TreeNode*> q;
+    q.push(root);
 
-    while (!myqueue.empty()) {
-        TreeNode* node = myqueue.front();
-        myqueue.pop();
+    while (!q.empty()) {
+        int levelSize = q.size();  // Number of nodes at current level
+        vector<int> currentLevel;
 
-        if (node == nullptr) {
-            ++i;
-            if (!myqueue.empty()) {
-                myqueue.push(nullptr);  
-            }
-        } else {
-            if (result.size() <= i) {
-                result.push_back({});
-            }
-            result[i].push_back(node->val);
+        for (int i = 0; i < levelSize; ++i) {
+            TreeNode* node = q.front();
+            q.pop();
+            currentLevel.push_back(node->val);
 
-            if (node->left) myqueue.push(node->left);
-            if (node->right) myqueue.push(node->right);
+            if (node->left) q.push(node->left);
+            if (node->right) q.push(node->right);
         }
+
+        result.push_back(currentLevel);  // Add current level to result
     }
 
     return result;
@@ -221,15 +215,19 @@ int MaxHeight(TreeNode* root){
 int main() {
     TreeNode* root = createSampleTree();
     // inorderTraversal(root);
-    int res = MaxHeight(root);
-    cout<<res<<endl;
+    // int res = MaxHeight(root);
+    // cout<<res<<endl;
     // InvertTree(root);
     // preorderTraversal(root);
     // vector<int> preorder = preorderTraversal(root);
-    // vector<int> inorder = inorderTraversal(root);
-    // for(auto x:inorder){
-    //     cout<<x<<endl;
-    // }
+    vector<vector<int>> inorder = levelOrder(root);
+    for(auto x:inorder){
+        for(auto y:x){
+            cout<<y<<" ";
+        }
+        cout<<endl;
+
+    }
 
     // TreeNode* swaproot = InvertTree(root);
     // int res = countNodes(root);
