@@ -14,7 +14,7 @@ struct TreeNode {
 // Function to print the tree (Optional, for testing)
 void printTree(TreeNode* root) {
     if (root == NULL) {
-        cout << "NULL ";
+        cout << "NULL";
         return;
     }
     cout << root->val << " ";

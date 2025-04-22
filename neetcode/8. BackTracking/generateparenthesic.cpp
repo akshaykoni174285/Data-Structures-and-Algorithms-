@@ -16,10 +16,7 @@ vector<string> GenerateParent(int k,string res,int closing,int opening,vector<st
     if(closing < opening){
         result = GenerateParent(k,res+")",closing+1,opening,result);
     }
-    return result;
-
-    
-    
+    return result;   
 }
 
 
