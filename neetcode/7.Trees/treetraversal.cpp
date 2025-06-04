@@ -2,6 +2,7 @@
 #include <stack>
 #include <algorithm>
 #include <vector>
+#include <queue>
 using namespace std;
 
 // TreeNode structure
@@ -106,6 +107,31 @@ vector<int> postorderItt(TreeNode* root){
     reverse(result.begin(), result.end()); // Reverse to get postorder
     return result;
 
+}
+
+void levelorderTraversal(TreeNode* root){
+    if(root == nullptr) return;
+    vector<vector<int>> levels;
+    vector<int> currentLevel;
+    queue<TreeNode*> q;
+    q.push(root);
+    q.push(nullptr); // Marker for end of level
+    while(!q.empty()) {
+        TreeNode* node = q.front();
+        q.pop();
+
+        if(node == nullptr) {
+            levels.push_back(currentLevel);
+            currentLevel.clear();
+            if(!q.empty()) {
+                q.push(nullptr); // Add marker for next level
+            }
+        } else {
+            currentLevel.push_back(node->val);
+            if(node->left) q.push(node->left);
+            if(node->right) q.push(node->right);
+        }
+    }
 }
 
 
