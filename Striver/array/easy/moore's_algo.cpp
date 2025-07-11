@@ -20,6 +20,7 @@ int main(int argc, char const *argv[])
         }
         if(nums[i]!=element) count--;
         else count++;
+        
     }
     
     cout<<element<<endl;
