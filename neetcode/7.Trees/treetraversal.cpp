@@ -100,11 +100,10 @@ vector<int> postorderItt(TreeNode* root){
         s.pop();
         result.push_back(node->val);
 
-        // Push left child first so that right child is processed first
         if (node->left) s.push(node->left);
         if (node->right) s.push(node->right);
     }
-    reverse(result.begin(), result.end()); // Reverse to get postorder
+    reverse(result.begin(), result.end()); 
     return result;
 
 }
