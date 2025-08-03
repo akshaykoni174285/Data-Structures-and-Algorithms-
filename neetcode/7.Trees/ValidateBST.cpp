@@ -3,7 +3,6 @@
 using namespace std;
 
 
-// Definition for a binary tree node.
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -11,7 +10,6 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-// Function to print the tree (Optional, for testing)
 void printTree(TreeNode* root) {
     if (root == NULL) {
         cout << "NULL";
@@ -22,7 +20,6 @@ void printTree(TreeNode* root) {
     printTree(root->right);
 }
 
-// Function to initialize a simple tree (for testing)
 TreeNode* buildTree() {
     TreeNode* root = new TreeNode(3);
     root->left = new TreeNode(1);
